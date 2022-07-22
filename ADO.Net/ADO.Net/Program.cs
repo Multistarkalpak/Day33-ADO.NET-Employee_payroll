@@ -14,7 +14,7 @@ namespace ADO.NetEmployeeProblem
             EmployeeRepository employeeRepo = new EmployeeRepository();
             Employee_Payroll model = new Employee_Payroll();
             Console.WriteLine("Enter the choice \n 1.AddingEmployee\n" +
-                " 2.UpdateEmployee\n 3.DeletingTheEmployee\n 4.InsertIntoTwoTables 5.InsertionUsingTsql\n 6.RetrivetheEmployeeAccordingToDateRange");
+                " 2.UpdateEmployee\n 3.DeletingTheEmployee\n 4.InsertIntoTwoTables 5.InsertionUsingTsql");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -72,12 +72,7 @@ namespace ADO.NetEmployeeProblem
                     employeeRepo.GetAllEmployees();
                     break;
 
-                case 6:
-
-                    employeeRepo.RetrivetheEmployeeAccordingToDateRange(model);
-                    //employeeRepo.GetAllEmployees();
-                    break;
-
+               
             }
 
         }
