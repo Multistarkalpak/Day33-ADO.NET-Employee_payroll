@@ -14,7 +14,7 @@ namespace ADO.NetEmployeeProblem
             EmployeeRepository employeeRepo = new EmployeeRepository();
             Employee_Payroll model = new Employee_Payroll();
             Console.WriteLine("Enter the choice \n 1.AddingEmployee\n" +
-                " 2.UpdateEmployee\n 3.DeletingTheEmployee\n 4.InsertIntoTwoTables");
+                " 2.UpdateEmployee\n 3.DeletingTheEmployee\n 4.InsertIntoTwoTables 5.InsertionUsingTsql\n 6.RetrivetheEmployeeAccordingToDateRange");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -53,6 +53,31 @@ namespace ADO.NetEmployeeProblem
                     employeeRepo.InsertIntoTwoTables(model);
                     employeeRepo.GetAllEmployees();
                     break;
+
+                case 5:
+                    model.Name = "Kalpak";
+                    model.Department = "HR";
+                    model.Address = "3rd main";
+                    model.Phone = 878929884;
+                    model.BasicPay = 3000000;
+                    model.StartDate = "2004-09-08";
+                    model.Gender = "M";
+                    model.TaxablePay = 79000;
+                    model.NetPay = 6588;
+                    model.IncomTax = 5676;
+                    model.Deductions = 2345;
+                    employeeRepo.AddEmployee(model);
+                    //so to add the information we will use the addmethod so thats y i am commenting it
+                    //employeeRepo.InsertIntoTwoTablesusingTSQL(model);
+                    employeeRepo.GetAllEmployees();
+                    break;
+
+                case 6:
+
+                    employeeRepo.RetrivetheEmployeeAccordingToDateRange(model);
+                    //employeeRepo.GetAllEmployees();
+                    break;
+
             }
 
         }
