@@ -13,7 +13,8 @@ namespace ADO.NetEmployeeProblem
         {
             EmployeeRepository employeeRepo = new EmployeeRepository();
             Employee_Payroll model = new Employee_Payroll();
-            Console.WriteLine("Enter the choice \n 1.AddingEmployee\n 2.UpdateEmployee");
+            Console.WriteLine("Enter the choice \n 1.AddingEmployee\n" +
+                " 2.UpdateEmployee\n 3.DeletingTheEmployee");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -21,7 +22,7 @@ namespace ADO.NetEmployeeProblem
                     model.Name = "kalpak";
                     model.Department = "HR";
                     model.Address = "3rd main";
-                    model.Phone = 897849918;
+                    model.Phone = 789562611;
                     model.BasicPay = 3000000;
                     model.StartDate = "2004-09-08";
                     model.Gender = "M";
@@ -39,6 +40,12 @@ namespace ADO.NetEmployeeProblem
                     employeeRepo.UpdateEmployee(model);
                     employeeRepo.GetAllEmployees();
                     break;
+                case 3:
+                    model.Name = "kalpak";
+                    employeeRepo.DeleteEmployee(model);
+                    employeeRepo.GetAllEmployees();
+                    break;
+
             }
 
         }
