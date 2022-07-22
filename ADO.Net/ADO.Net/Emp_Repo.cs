@@ -1,8 +1,7 @@
-﻿
-using ADO.Net;
+﻿using ADO.Net;
 using System;
 using System.Collections.Generic;
-
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -59,6 +58,52 @@ namespace ADO.NetEmployeeProblem
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+        public void AddEmployee(Employee_Payroll model)
+        {
+            try
+            {
+                Connection = new SqlConnection(ConncetionString);
+                SqlCommand command = new SqlCommand("dbo.spAddEmployee", Connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                //command.Parameters.AddWithValue("@EmployeeName", model.EmployeeID);
+                command.Parameters.AddWithValue("@Name", model.Name);
+                command.Parameters.AddWithValue("@Department", model.Department);
+                command.Parameters.AddWithValue("@Address", model.Address);
+                command.Parameters.AddWithValue("@Phone", model.Phone);
+                command.Parameters.AddWithValue("@BasicPay", model.BasicPay);
+                command.Parameters.AddWithValue("@StartDate", model.StartDate);
+                command.Parameters.AddWithValue("@Gender", model.Gender);
+                command.Parameters.AddWithValue("@TaxablePay", model.TaxablePay);
+                command.Parameters.AddWithValue("@NetPay", model.NetPay);
+                command.Parameters.AddWithValue("@IncomeTax", model.IncomTax);
+                command.Parameters.AddWithValue("@Deductions", model.Deductions);
+
+
+
+                this.Connection.Open();
+                var result = command.ExecuteNonQuery();
+                this.Connection.Close();
+                if (result != 0)
+                {
+                    Console.WriteLine("employee inserted suceesfully into table");
+                }
+                else
+                {
+                    Console.WriteLine("Not interested");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Connection.Close();
+
             }
         }
     }
