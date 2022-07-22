@@ -21,4 +21,9 @@ insert into Employeetable values('kalpak','HR','1st Cross',9624646441,2000000,'M
 ('Shivraj','Development','2nd Cross',7958255625,3000000,'M','2017-05-01',60000,900000,9500,7900),
 ('Vishwas','CEO','3rd Cross',7956626426,4000000,'M','2008-04-01',800000,900000,91000,7100);
 
-select * from Employeetable;
+Alter table EmployeeTable Add EmpId int IDENTITY(1,1) primary key;
+
+Alter table EmployeeTable
+Drop COLUMN EmpId;
+
+Drop table EmployeeTable;
